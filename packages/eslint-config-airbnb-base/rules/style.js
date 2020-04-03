@@ -143,7 +143,7 @@ module.exports = {
       ImportDeclaration: 1,
       flatTernaryExpressions: false,
       // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
-      ignoredNodes: ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
+      ignoredNodes: ['JSXElement', 'JSXElement > *', 'JSXAttribute', 'JSXIdentifier', 'JSXNamespacedName', 'JSXMemberExpression', 'JSXSpreadAttribute', 'JSXExpressionContainer', 'JSXOpeningElement', 'JSXClosingElement', 'JSXFragment', 'JSXOpeningFragment', 'JSXClosingFragment', 'JSXText', 'JSXEmptyExpression', 'JSXSpreadChild'],
       ignoreComments: false
     }],
 
@@ -313,7 +313,7 @@ module.exports = {
 
     // disallow multiple empty lines, only one newline at the end, and no new lines at the beginning
     // https://eslint.org/docs/rules/no-multiple-empty-lines
-    'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 1, maxEOF: 0 }],
+    'no-multiple-empty-lines': ['error', { max: 2, maxBOF: 0, maxEOF: 0 }],
 
     // disallow negated conditions
     // https://eslint.org/docs/rules/no-negated-condition
@@ -501,7 +501,7 @@ module.exports = {
     'spaced-comment': ['error', 'always', {
       line: {
         exceptions: ['-', '+'],
-        markers: ['=', '!'], // space here to support sprockets directives
+        markers: ['=', '!', '/'], // space here to support sprockets directives, slash for TS /// comments
       },
       block: {
         exceptions: ['-', '+'],
